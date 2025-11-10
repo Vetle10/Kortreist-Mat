@@ -95,6 +95,42 @@
             margin-bottom: 8px;
         }
 
+        /* --- Viste du at-boks --- */
+        .fact-box {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #2d5d2d;
+            color: white;
+            padding: 12px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            font-weight: bold;
+            z-index: 1000;
+            transition: background-color 0.3s;
+        }
+
+        .fact-box:hover {
+            background-color: #3e7a3e;
+        }
+
+        .fact-text {
+            position: fixed;
+            bottom: 70px;
+            right: 20px;
+            background-color: #f5fff5;
+            color: #2d5d2d;
+            border: 2px solid #9ac99a;
+            border-radius: 10px;
+            padding: 15px;
+            width: 260px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            font-size: 0.95em;
+            display: none;
+            z-index: 999;
+        }
+
         /* Responsivt for mobil */
         @media screen and (max-width: 768px) {
             .section {
@@ -104,6 +140,13 @@
             .info-box, .image-placeholder, .image-box {
                 width: 90% !important;
             }
+            .fact-box, .fact-text {
+                right: 10px;
+                bottom: 10px;
+            }
+            .fact-text {
+                width: 80%;
+            }
         }
     </style>
 </head>
@@ -112,7 +155,7 @@
     <h1>Kortreist mat 🐄🍏</h1>
     <div class="subtitle-box">Mat Fra Hagen, Rett I Magen🌱</div>
 
-    <!-- Seksjon 1: bilde over tekst -->
+    <!-- Seksjon 1 -->
     <div class="section">
         <div class="image-box" style="width: 80%;">
             <img src="https://cdn.pixabay.com/photo/2018/10/25/09/25/mountains-3771998_1280.jpg" alt="Fjellandskap som illustrerer natur og miljø">
@@ -125,7 +168,7 @@ Våre valg kan redusere CO₂-utslipp, spare energi og støtte lokale bønder.</
         </div>
     </div>
 
-    <!-- Seksjon 2: tekst til venstre, bilde til høyre -->
+    <!-- Seksjon 2 -->
     <div class="section">
         <div class="info-box" style="width: 50%;">
             <h2>🚛 Langreist mat og konsekvenser</h2>
@@ -134,7 +177,7 @@ Våre valg kan redusere CO₂-utslipp, spare energi og støtte lokale bønder.</
         <div class="image-placeholder" style="width: 40%;">Bilde her</div>
     </div>
 
-    <!-- Seksjon 3: bilde til venstre, tekst til høyre -->
+    <!-- Seksjon 3 -->
     <div class="section">
         <div class="image-placeholder" style="width: 40%;">Bilde her</div>
         <div class="info-box" style="width: 50%;">
@@ -143,7 +186,7 @@ Våre valg kan redusere CO₂-utslipp, spare energi og støtte lokale bønder.</
         </div>
     </div>
 
-    <!-- Seksjon 4: bilde under tekst -->
+    <!-- Seksjon 4 -->
     <div class="section">
         <div class="info-box" style="width: 60%;">
             <h2>🌡️ Drivhuseffekten</h2>
@@ -152,7 +195,7 @@ Våre valg kan redusere CO₂-utslipp, spare energi og støtte lokale bønder.</
         <div class="image-placeholder" style="width: 70%;">Bilde her</div>
     </div>
 
-    <!-- Seksjon 5: fullbredde flytende boks med bilde over -->
+    <!-- Seksjon 5 -->
     <div class="section" style="justify-content: center;">
         <div class="image-placeholder" style="width: 90%;">Bilde her</div>
         <div class="info-box" style="width: 85%; text-align: center;">
@@ -173,6 +216,20 @@ Våre valg kan redusere CO₂-utslipp, spare energi og støtte lokale bønder.</
             <li>Bidra til å bremse global oppvarming 🔥</li>
         </ul>
     </div>
+
+    <!-- 💡 Visste du at-boks -->
+    <div class="fact-box" onclick="toggleFact()">💡 Visste du at?</div>
+    <div class="fact-text" id="factText">
+        Viste du at en kilo storfekjøtt på kjøkkenbenken kan føre til 
+        <strong>100 ganger mer klimagassutslipp</strong> enn en kilo grønnsaker? 🥦
+    </div>
+
+    <script>
+        function toggleFact() {
+            const fact = document.getElementById('factText');
+            fact.style.display = fact.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
 
 </body>
 </html>

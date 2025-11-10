@@ -129,6 +129,7 @@
             font-size: 0.95em;
             display: none;
             z-index: 999;
+            line-height: 1.4em;
         }
 
         /* Responsivt for mobil */
@@ -140,12 +141,23 @@
             .info-box, .image-placeholder, .image-box {
                 width: 90% !important;
             }
-            .fact-box, .fact-text {
-                right: 10px;
-                bottom: 10px;
+
+            /* Gjør "Visste du at?" enklere å lese på mobil */
+            .fact-box {
+                bottom: 15px;
+                right: 50%;
+                transform: translateX(50%);
+                padding: 14px 20px;
+                font-size: 1.1em;
             }
+
             .fact-text {
-                width: 80%;
+                bottom: 80px;
+                right: 50%;
+                transform: translateX(50%);
+                width: 85%;
+                font-size: 1.05em;
+                text-align: center;
             }
         }
     </style>
@@ -177,12 +189,13 @@ Våre valg kan redusere CO₂-utslipp, spare energi og støtte lokale bønder.</
         <div class="image-placeholder" style="width: 40%;">Bilde her</div>
     </div>
 
-    <!-- Seksjon 3 -->
+    <!-- Seksjon 3 (oppdatert) -->
     <div class="section">
         <div class="image-placeholder" style="width: 40%;">Bilde her</div>
         <div class="info-box" style="width: 50%;">
-            <h2>🐄 Transport og karbonkretsløp</h2>
-            <p>Transport av mat påvirker karbonets kretsløp. Lokale valg hjelper naturen å balansere.</p>
+            <h2>🌱 Karbonkretsløpet</h2>
+            <p>Karbonkretsløpet beskriver hvordan karbon sirkulerer mellom atmosfæren, planter, dyr og jorda. 
+Ved å spise lokalt og redusere transport, kan vi bidra til at mer karbon blir bundet i naturen og mindre slippes ut i lufta.</p>
         </div>
     </div>
 

@@ -58,15 +58,16 @@
             padding-bottom: 8px;
         }
 
-        .image-placeholder {
-            background-color: #e0e0e0;
+        .image-placeholder, .image-box img {
             border-radius: 10px;
             box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-            text-align: center;
-            line-height: 200px;
-            color: #777;
-            font-style: italic;
             margin-bottom: 10px;
+        }
+
+        .image-box img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         .summary-box {
@@ -100,7 +101,7 @@
                 flex-direction: column !important;
                 align-items: center;
             }
-            .info-box, .image-placeholder {
+            .info-box, .image-placeholder, .image-box {
                 width: 90% !important;
             }
         }
@@ -113,7 +114,9 @@
 
     <!-- Seksjon 1: bilde over tekst -->
     <div class="section">
-        <div class="image-placeholder" style="width: 80%;">Bilde her</div>
+        <div class="image-box" style="width: 80%;">
+            <img src="https://cdn.pixabay.com/photo/2018/10/25/09/25/mountains-3771998_1280.jpg" alt="Fjellandskap som illustrerer natur og miljø">
+        </div>
         <div class="info-box" style="width: 70%;">
             <h2>🌱 Hvordan påvirker våre matvalg miljøet?</h2>
             <p>Det er flere ulike ulemper med at maten er langreist. For eksempel kan transporten som maten bruker forurense verden, og skape global oppvarming. 
@@ -173,4 +176,3 @@ Våre valg kan redusere CO₂-utslipp, spare energi og støtte lokale bønder.</
 
 </body>
 </html>
-

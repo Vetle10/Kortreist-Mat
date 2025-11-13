@@ -58,6 +58,23 @@
             padding-bottom: 8px;
         }
 
+        /* Ny boks lagt til */
+        .extra-info-box {
+            background: linear-gradient(to bottom right, #fdfdfd, #e8f5e9);
+            border-radius: 12px;
+            padding: 20px;
+            width: 70%;
+            margin: 20px auto 50px auto;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+            color: #2d5d2d;
+        }
+
+        .extra-info-box h2 {
+            border-bottom: 2px solid #9ac99a;
+            padding-bottom: 8px;
+            margin-top: 0;
+        }
+
         .image-placeholder, .image-box img {
             border-radius: 10px;
             box-shadow: 0 2px 6px rgba(0,0,0,0.05);
@@ -138,11 +155,10 @@
                 flex-direction: column !important;
                 align-items: center;
             }
-            .info-box, .image-placeholder, .image-box {
+            .info-box, .image-placeholder, .image-box, .extra-info-box {
                 width: 90% !important;
             }
 
-            /* Gjør "Visste du at?" enklere å lese på mobil */
             .fact-box {
                 bottom: 15px;
                 right: 50%;
@@ -172,6 +188,18 @@
         <div class="image-box" style="width: 80%;">
             <img src="https://cdn.pixabay.com/photo/2018/10/25/09/25/mountains-3771998_1280.jpg" alt="Fjellandskap som illustrerer natur og miljø">
         </div>
+    </div>
+
+    <!-- 💬 Ny tekstboks lagt til her -->
+    <div class="extra-info-box">
+        <h2>Hvordan påvirker våre valg miljøet?</h2>
+        <p>Hver gang vi handler mat, tar vi valg som påvirker miljøet. Velger vi kortreist mat, reduseres transportbehovet og dermed utslippene av klimagasser. 
+           Ved å kjøpe lokale produkter støtter vi bærekraftig landbruk, mindre emballasje og bevaring av naturressurser. 
+           Når flere gjør slike bevisste valg, kan det bidra til å bremse klimaendringer og skape et sunnere miljø for fremtidige generasjoner. </p>
+    </div>
+
+    <!-- Resten av innholdet beholdt som før -->
+    <div class="section">
         <div class="info-box" style="width: 70%;">
             <h2>🌱 Hvordan påvirker våre matvalg miljøet?</h2>
             <p>Det er flere ulike ulemper med at maten er langreist. For eksempel kan transporten som maten bruker forurense verden, og skape global oppvarming. 
@@ -212,8 +240,6 @@ Våre valg kan redusere CO₂-utslipp, spare energi og støtte lokale bønder.</
                 Disse drivhusgassene legger seg som et teppe ved atmosfæren. Og på grunn av drivhusgassene vil varmestrålingen reflektere flere ganger. Og det er dette som gjør at Jorden blir varmet opp.
                 Det vil si at jo mer drivhusgasser som er i luften, jo mer beholder jorden på varmen. 
             </p>
-
-            <!-- 🌍 Nytt avsnitt lagt inn her -->
 
             <p>Drivhuseffekten er egentlig noe som skal skje naturlig, fordi vulkanutbrudd slipper ut CO₂ fra jordas indre, og Metan produseres ved nedbrytning av organisk materiale i sumpområder. Men bare fra 1800 tallet kan vi se en tydelig endring, og dette er fordi dette var tidsrommet til den industrielle revolusjonen. 
                 Og med den industrielle revolusjonen begynte mennesker å brenne store mengder kull, olje og gass, som er store CO₂ produsenter.

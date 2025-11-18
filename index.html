@@ -338,6 +338,185 @@ Våre valg kan redusere CO₂-utslipp, spare energi og støtte lokale bønder.</
         padding:75px;/*Avstand inni boksen*/ background:#d9f0e1;
     }
 </style>
+
+
+    <script>
+        function toggleFact() {
+            const fact = document.getElementById('factText');
+            fact.style.display = fact.style.display === 'block' ? 'none' : 'block';
+            
+        }
+    </script>
+    
+    
+    <!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kortreist Matspill</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #d9f0e1;
+    padding: 20px;
+    color: #333;
+  }
+
+  h1 {
+    color: #2d5d2d;
+  }
+
+  #game {
+    display: none;
+    margin-top: 20px;
+  }
+
+  .food {
+    font-size: 50px;
+    display: inline-block;
+    margin: 10px;
+    padding: 10px;
+    cursor: pointer;
+    border: 3px solid transparent;
+    border-radius: 10px;
+    transition: transform 0.2s;
+  }
+
+  .food:hover {
+    transform: scale(1.2);
+  }
+
+  .local {
+    border-color: green;
+  }
+
+  .non-local {
+    border-color: red;
+  }
+
+  #score, #timer {
+    font-size: 24px;
+    margin-top: 20px;
+  }
+
+  #startBtn {
+    background-color: #2d5d2d;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  #startBtn:hover {
+    background-color: #3e7a3e;
+  }
+</style>
+</head>
+<body>
+
+<h2 style="text-align: center;"> Kortreist Matspill</h2>
+<p style="text-align: center;">Samle de kortreiste råvarene, hint de har grønn kant</p> 
+<div style="text-align: center;">
+    <button id="startBtn" style="padding: 12px 25px;">Spill</button> </div>
+
+<div id="game">
+  <div id="foods"></div>
+  <div id="score">Poeng: 0</div>
+  <div id="timer">Tid igjen: 30s</div>
+</div>
+
+<script>
+const startBtn = document.getElementById('startBtn');
+const gameDiv = document.getElementById('game');
+const foodsDiv = document.getElementById('foods');
+const scoreDiv = document.getElementById('score');
+const timerDiv = document.getElementById('timer');
+
+let score = 0;
+let gameActive = false;
+let timer;
+let timeLeft = 30;
+
+// Matvarer (emoji + lokal status)
+const foods = [
+  {emoji: '🍎', local: true},
+  {emoji: '🥕', local: true},
+  {emoji: '🥦', local: true},
+  {emoji: '🥔', local: true},
+  {emoji: '🍌', local: false},
+  {emoji: '🥭', local: false},
+  {emoji: '🍇', local: false},
+  {emoji: '🍍', local: false},
+];
+
+function startGame() {
+  score = 0;
+  timeLeft = 30;
+  gameActive = true;
+  gameDiv.style.display = 'block';
+  scoreDiv.textContent = "Poeng: " + score;
+  timerDiv.textContent = "Tid igjen: " + timeLeft + "s";
+  loadFoods();
+
+  clearInterval(timer);
+  timer = setInterval(() => {
+    timeLeft--;
+    timerDiv.textContent = "Tid igjen: " + timeLeft + "s";
+    if(timeLeft <= 0) {
+      endGame();
+    }
+  }, 1000);
+}
+
+function loadFoods() {
+  foodsDiv.innerHTML = '';
+  const shuffled = foods.sort(() => 0.5 - Math.random());
+  shuffled.forEach(food => {
+    const foodElem = document.createElement('div');
+    foodElem.textContent = food.emoji;
+    foodElem.classList.add('food');
+    foodElem.classList.add(food.local ? 'local' : 'non-local');
+    foodElem.addEventListener('click', () => pickFood(food));
+    foodsDiv.appendChild(foodElem);
+  });
+}
+
+function pickFood(food) {
+  if(!gameActive) return;
+  
+  if(food.local) {
+    score += 10;
+  } else {
+    score -= 5;
+  }
+
+  scoreDiv.textContent = "Poeng: " + score;
+
+  if(score < 0) {
+    alert("Spillet er over! Du fikk for mange ikke-kortreiste matvarer.");
+    endGame();
+  } else {
+    loadFoods();
+  }
+}
+
+function endGame() {
+  gameActive = false;
+  clearInterval(timer);
+  alert("Spillet er over! Din poengsum: " + score);
+  gameDiv.style.display = 'none';
+}
+
+startBtn.addEventListener('click', startGame);
+</script>
+
+</body>
+</html>
+
     
 
     <div style="height: 400px;"></div>

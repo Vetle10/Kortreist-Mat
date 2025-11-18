@@ -244,10 +244,13 @@ Våre valg kan redusere CO₂-utslipp, spare energi og støtte lokale bønder.</
                 Denne varmestrålingen blir sendt ut i luften igjen, men her blir noe av den fanget, og dette fungerer fordi vi på jorden slipper ut drivhusgasser, som for eksempel CO₂, metan og H2o. 
                 Disse drivhusgassene legger seg som et teppe ved atmosfæren. Og på grunn av drivhusgassene vil varmestrålingen reflektere flere ganger. Og det er dette som gjør at Jorden blir varmet opp.
                 Det vil si at jo mer drivhusgasser som er i luften, jo mer beholder jorden på varmen. 
-            </p>
-
-            <p>Drivhuseffekten er egentlig noe som skal skje naturlig, fordi vulkanutbrudd slipper ut CO₂ fra jordas indre, og Metan produseres ved nedbrytning av organisk materiale i sumpområder. Men bare fra 1800 tallet kan vi se en tydelig endring, og dette er fordi dette var tidsrommet til den industrielle revolusjonen. 
+            
+            
+            <p>
+                Drivhuseffekten er egentlig noe som skal skje naturlig, fordi vulkanutbrudd slipper ut CO₂ fra jordas indre, og Metan produseres ved nedbrytning av organisk materiale i sumpområder. Men bare fra 1800 tallet kan vi se en tydelig endring, og dette er fordi dette var tidsrommet til den industrielle revolusjonen. 
                 Og med den industrielle revolusjonen begynte mennesker å brenne store mengder kull, olje og gass, som er store CO₂ produsenter.
+            <p>
+                Kortreist mat er jo da positivt for drivhuseffekten, fordi da unngår vi det CO2 utslippet som oppstår når vi transporterer mat. Og i forhold til de langreiste matvarene der det er store CO2 utslipp, ungår de kortreiste matvarene ødeleggelse av liv, miljø, klima og naturområder.
             </p>
         </div>
         <div class="image-placeholder" style="width: 70%;">Bilde her</div>
@@ -312,7 +315,7 @@ Våre valg kan redusere CO₂-utslipp, spare energi og støtte lokale bønder.</
     <!-- 💡 Visste du at-boks -->
     <div class="fact-box" onclick="toggleFact()">💡 Visste du at?</div>
     <div class="fact-text" id="factText">
-        Viste du at en kilo storfekjøtt på kjøkkenbenken kan føre til 
+        Visste du at en kilo storfekjøtt på kjøkkenbenken kan føre til 
         <strong>100 ganger mer klimagassutslipp</strong> enn en kilo grønnsaker? 🥦
     </div>
     
@@ -336,8 +339,177 @@ Våre valg kan redusere CO₂-utslipp, spare energi og støtte lokale bønder.</
         function toggleFact() {
             const fact = document.getElementById('factText');
             fact.style.display = fact.style.display === 'block' ? 'none' : 'block';
+            
         }
     </script>
+    
+    
+    <!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kortreist Matspill</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #d9f0e1;
+    padding: 20px;
+    color: #333;
+  }
+
+  h1 {
+    color: #2d5d2d;
+  }
+
+  #game {
+    display: none;
+    margin-top: 20px;
+  }
+
+  .food {
+    font-size: 50px;
+    display: inline-block;
+    margin: 10px;
+    padding: 10px;
+    cursor: pointer;
+    border: 3px solid transparent;
+    border-radius: 10px;
+    transition: transform 0.2s;
+  }
+
+  .food:hover {
+    transform: scale(1.2);
+  }
+
+  .local {
+    border-color: green;
+  }
+
+  .non-local {
+    border-color: red;
+  }
+
+  #score, #timer {
+    font-size: 24px;
+    margin-top: 20px;
+  }
+
+  #startBtn {
+    background-color: #2d5d2d;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  #startBtn:hover {
+    background-color: #3e7a3e;
+  }
+</style>
+</head>
+<body>
+
+<h1>Kortreist Matspill</h1>
+<button id="startBtn">Spill</button>
+
+<div id="game">
+  <div id="foods"></div>
+  <div id="score">Poeng: 0</div>
+  <div id="timer">Tid igjen: 30s</div>
+</div>
+
+<script>
+const startBtn = document.getElementById('startBtn');
+const gameDiv = document.getElementById('game');
+const foodsDiv = document.getElementById('foods');
+const scoreDiv = document.getElementById('score');
+const timerDiv = document.getElementById('timer');
+
+let score = 0;
+let gameActive = false;
+let timer;
+let timeLeft = 30;
+
+// Matvarer (emoji + lokal status)
+const foods = [
+  {emoji: '🍎', local: true},
+  {emoji: '🥕', local: true},
+  {emoji: '🥦', local: true},
+  {emoji: '🥔', local: true},
+  {emoji: '🍌', local: false},
+  {emoji: '🥭', local: false},
+  {emoji: '🍇', local: false},
+  {emoji: '🍍', local: false},
+];
+
+function startGame() {
+  score = 0;
+  timeLeft = 30;
+  gameActive = true;
+  gameDiv.style.display = 'block';
+  scoreDiv.textContent = "Poeng: " + score;
+  timerDiv.textContent = "Tid igjen: " + timeLeft + "s";
+  loadFoods();
+
+  clearInterval(timer);
+  timer = setInterval(() => {
+    timeLeft--;
+    timerDiv.textContent = "Tid igjen: " + timeLeft + "s";
+    if(timeLeft <= 0) {
+      endGame();
+    }
+  }, 1000);
+}
+
+function loadFoods() {
+  foodsDiv.innerHTML = '';
+  const shuffled = foods.sort(() => 0.5 - Math.random());
+  shuffled.forEach(food => {
+    const foodElem = document.createElement('div');
+    foodElem.textContent = food.emoji;
+    foodElem.classList.add('food');
+    foodElem.classList.add(food.local ? 'local' : 'non-local');
+    foodElem.addEventListener('click', () => pickFood(food));
+    foodsDiv.appendChild(foodElem);
+  });
+}
+
+function pickFood(food) {
+  if(!gameActive) return;
+  
+  if(food.local) {
+    score += 10;
+  } else {
+    score -= 5;
+  }
+
+  scoreDiv.textContent = "Poeng: " + score;
+
+  if(score < 0) {
+    alert("Spillet er over! Du fikk for mange ikke-kortreiste matvarer.");
+    endGame();
+  } else {
+    loadFoods();
+  }
+}
+
+function endGame() {
+  gameActive = false;
+  clearInterval(timer);
+  alert("Spillet er over! Din poengsum: " + score);
+  gameDiv.style.display = 'none';
+}
+
+startBtn.addEventListener('click', startGame);
+</script>
+
+</body>
+</html>
+
     <div style="height: 400px;"></div>
 
 
